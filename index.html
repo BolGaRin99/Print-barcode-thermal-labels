@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Друк етикеток</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="custom-box">
+            Перед друком переконайтеся, що весь текст у діапазоні однієї етикетки і не виходить за рамки.
+        </div>
+        <div class="selectors">
+            <div class="select-container">
+                <label for="label-size">Розмір етикетки:</label>
+                <select id="label-size">
+                    <option value="30x20">30x20</option>
+                    <option value="40x25">40x25</option>
+                    <option value="57x40">57x40</option>
+                    <option value="60x40">60x40</option>
+                    <option value="70x40">70x40</option>
+                    <option value="100x100">100x100</option>
+                </select>
+            </div>
+            <div class="select-container">
+                <label for="font-size">Розмір шрифту:</label>
+                <select id="font-size">
+                    <option value="250">250</option>
+                    <option value="225">225</option>
+                    <option value="200">200</option>
+                    <option value="16">16</option>
+                    <option value="14">14</option>
+                    <option value="12">12</option>
+                    <option value="10" selected>10</option>
+                    <option value="8">8</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+            <div class="select-container">
+                <label for="multi-page">Друк на окремих сторінках:</label>
+                <input type="checkbox" id="multi-page">
+            </div>
+        </div>
+
+        <textarea id="text-input" rows="5" placeholder="Введіть текст..." style="height: 70px; width: 375px;"></textarea>
+        <button id="print-button">Друк</button>
+        <div id="print-area"></div>
+    </div>
+
+
+    <div class="container">
+        <input autofocus id="barcode-input" type="text" placeholder="Введіть дані для штрих-коду..." style="width: 375px;">
+        <div class="select-container">
+            <label for="barcode-type">Тип штрих-коду:</label>
+            <select id="barcode-type">
+                <option value="code128" selected>Code 128</option>
+                <option value="ean13">EAN-13</option>
+                <option value="code39">Code 39</option>
+            </select>
+        </div>
+
+        <div id="barcode-print-area" style="display: none;"></div>
+        <button id="barcode-print-button" style="display: none;">Друк штрих-коду</button>
+        <div id="info-box" class="custom-box" style="display: none;">
+            Некоректна кількість символів для обраного типу штрих-коду.
+        </div>
+    </div>
+
+    <div class="container">
+        <input type="file" id="image-input" accept="image/*" style="width: 375px;">
+        <div class="select-container">
+            <label for="image-label-size">Розмір етикетки:</label>
+            <select id="image-label-size">
+                <option value="30x20">30x20</option>
+                <option value="40x25">40x25</option>
+                <option value="57x40">57x40</option>
+                <option value="60x40">60x40</option>
+                <option value="70x40">70x40</option>
+                <option value="100x100">100x100</option>
+            </select>
+        </div>
+        <div id="image-preview" style="margin-top: 10px;"></div>
+        <button id="image-print-button">Друк зображення</button>
+    </div>
+
+    <script src="label.js"></script>
+    <script src="barcode.js"></script>
+    <script src="img.js"></script>
+</body>
+
+</html>
